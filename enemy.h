@@ -12,7 +12,7 @@ class Enemy : public Entity
 {
     private:
 		int jumpStrength;
-		int dir;
+		//int dir;
 
     public:
         Enemy();

@@ -8,39 +8,55 @@
 class Entity
 {
     protected:
-		int speed;
+		int speed = 1;
 		int spriteX;
 		int spriteY;
-		int oldx;
-		int xVelocity;
+		int newX = 0;
+		int newY = 0;
+		int xVelocity = 0;
+		int yVelocity = 0;
 		bool dead = false;
 		bool dying = false;
+		bool dir[5];
+		int entityID; //TYPE OF ENTITY (Player, Enemy, etc.)
+		int uniqueID; //IDENTIFIER IN CURRENT SESSION
+		int listID; //CURRENT SPOT IN ENTITY LIST
+		int friction = 1;
+		int acceleration = 1;
 
     public:
         Entity();
         ~Entity();
         virtual void update();
-		void setXY(int, int);
 		int x; // CHANGE THESE VALUES BACK TO PRIVATE
 		int y; // THIS IS JUST TO TEST MOVING THE SPRITE IN Game!!!
-		bool left;
-		bool right;
 		int height;
 		int width;
-		void mover(int);
-		void move();
+		//void mover(int);
+		//void move();
 		//string sprite;
-		int entityID;
-		int uniqueID;
-		int listID;
 		void setListID(int id);
+		int getListID();
+		int getEntityID();
 		bool getIsDead();
 		void kill();
 		bool collided = false;
 		bool floorHit = false;
 		bool wallHit = false;
 		bool collideSide[4]; //1=right 2=left 3=top 4=bottom
-	//void setTexture(*Display);
+		void setXY(int, int);
+		void setNewXY(int, int);
+		int getX();
+		int getY();
+		int getXVelocity();
+		int getYVelocity();
+		void setXVelocity(int);
+		void setYVelocity(int);
+		bool getDir(int);
+		int getFriction();
+		int getSpeed();
+		int getAcceleration();
+
 }; //end Entity
 
 #endif //ENTITY_EXISTS

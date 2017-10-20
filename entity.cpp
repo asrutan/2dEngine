@@ -14,11 +14,14 @@ Entity::Entity()
     //end private vars
     //x = 200;
    // y = 300;
-    left = false;
-    right = false;
     height = 50;
     width = 50;
-    //end public vars
+	dir[0] = true;
+	dir[1] = false;
+	dir[2] = false;
+	dir[3] = false;
+	dir[4] = false;
+    //end public var
 } //end constructor
 
 Entity::~Entity()
@@ -28,7 +31,16 @@ Entity::~Entity()
 void Entity::setListID(int id)
 {
 	listID = id;
-}//end setListID
+}
+int Entity::getListID()
+{
+	return listID;
+}
+int Entity::getEntityID()
+{
+	return entityID;
+}
+//end setListID
 
 void Entity::update()
 {
@@ -43,7 +55,54 @@ void Entity::setXY(int mx, int my)
 {
 	x = mx;
 	y = my;
-}//end setXY
+}
+
+void Entity::setNewXY(int mx, int my)
+{
+	newX = x + mx;
+	newY = y + my;
+}
+int Entity::getX()
+{
+	return x;
+}
+int Entity::getY()
+{
+	return y;
+}
+int Entity::getXVelocity()
+{
+	return xVelocity;
+}
+int Entity::getYVelocity()
+{
+	return yVelocity;
+}
+void Entity::setXVelocity(int xVel)
+{
+	xVelocity += xVel;
+}
+void Entity::setYVelocity(int yVel)
+{
+	yVelocity += yVel;
+}
+bool Entity::getDir(int i)
+{
+	return dir[i];
+}
+int Entity::getFriction()
+{
+	return friction;
+}
+int Entity::getSpeed()
+{
+	return speed;
+}
+int Entity::getAcceleration()
+{
+	return acceleration;
+}
+//end setXY
 
 
 void Entity::kill()

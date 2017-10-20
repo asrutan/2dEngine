@@ -9,9 +9,19 @@ using namespace std;
 
 Enemy::Enemy()
 {
-    speed = 10;
+    //speed = 10;
     xVelocity = 0;
+	yVelocity = 0;
     //end protected inherited vars
+
+	dir[0] = true;
+	dir[1] = false;
+	dir[2] = false;
+	dir[3] = false;
+	dir[4] = false;
+
+	newX = 0;
+	newY = 0;
 
     x = 0;
     y = 0;
@@ -28,9 +38,24 @@ Enemy::Enemy()
 
 Enemy::Enemy(int direction)
 {
-	speed = 10;
+	//speed = 10;
 	xVelocity = 0;
+
+	dir[0] = false;
+	dir[1] = false;
+	dir[2] = false;
+	dir[3] = false;
+	dir[4] = false;
+
+	dir[direction] = true;
+
+	speed = 1;
+	xVelocity = 0;
+	yVelocity = 0;
 	//end protected inherited vars
+
+	newX = 0;
+	newY = 0;
 
 	x = 0;
 	y = 0;
@@ -41,8 +66,6 @@ Enemy::Enemy(int direction)
 	tick = 0;
 	frame = 0;
 	//end new vars
-
-	dir = direction;
 
 	entityID = 1;
 } //end constructor
@@ -56,37 +79,18 @@ void Enemy::update()
 	if (!dying)
 	{
 		if (collided)kill();
+		
+		x = newX;
+		y = newY;
 
-		if (dir == 0)
+		if (x < 0)
 		{
-			x--;
-			//y--;
-			
-			if (x < 0)
-			{
-				x = 800;
-			}
-			/*if (y < 0)
-			{
-				y = 600;
-			}*/
+			x = 800;
 		}
-		else if (dir == 1)
-		{
-			//x++;
-			y++;
-			/*if (x > 800)
-			{
-				x = 0;
-			}*/
-			if (y > 600)
-			{
-				y = 0;
-			}
-		}
-		else
-		{
 
+		if (x > 800)
+		{
+			x = 0;
 		}
 	}
 	else

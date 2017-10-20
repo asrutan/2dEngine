@@ -184,10 +184,10 @@ void Display::update()
 
 void Display::draw(Entity *entity)
 {
-	dstrect[entity->entityID].x = entity->x;
-	dstrect[entity->entityID].y = entity->y;
-	dstrect[entity->entityID].w = entity->width;
-	dstrect[entity->entityID].h = entity->height;
+	dstrect[entity->getEntityID()].x = entity->x;
+	dstrect[entity->getEntityID()].y = entity->y;
+	dstrect[entity->getEntityID()].w = entity->width;
+	dstrect[entity->getEntityID()].h = entity->height;
 
 	//SDL_Rect fillRect = {50, 50, 50, 50 };
 	SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);
@@ -200,7 +200,7 @@ void Display::draw(Entity *entity)
 
 	//SDL_RenderCopy(renderer, entityTexture[entity->entityID], &srcrect[entity->entityID], &dstrect[entity->entityID]);
 
-	SDL_RenderCopy(renderer, entityTexture[entity->entityID], NULL, &dstrect[entity->entityID]); //draw entity
+	SDL_RenderCopy(renderer, entityTexture[entity->getEntityID()], NULL, &dstrect[entity->getEntityID()]); //draw entity
 }
 
 void Display::draw(World *world)

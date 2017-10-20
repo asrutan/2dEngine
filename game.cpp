@@ -37,23 +37,23 @@ int Game::spawn(int entid)
 	if (entid == 0)
 		{ 
 			entlist[entcount] = new Player();
-			entlist[entcount]->listID = entcount;
+			entlist[entcount]->setListID(entcount);
 			entcount++;
 
 			return 0;
 		}
 	else if (entid == 1)
 	{
-		entlist[entcount] = new Enemy(0);
-		entlist[entcount]->listID = entcount;
+		entlist[entcount] = new Enemy(1);
+		entlist[entcount]->setListID(entcount);
 		entlist[entcount]->setXY(mousex, mousey);
 		entcount++;
 		return 0;
 	}
 	else if (entid == 2)
 	{
-		entlist[entcount] = new Enemy(1);
-		entlist[entcount]->listID = entcount;
+		entlist[entcount] = new Enemy(2);
+		entlist[entcount]->setListID(entcount);
 		entlist[entcount]->setXY(mousex, mousey);
 		entcount++;
 		return 0;
@@ -65,7 +65,7 @@ int Game::despawn(Entity* entity)
 {
 	if (entcount < 1) { cout << "nothing to despawn" << endl;  return 0; }
 
-	int old = entity->listID;
+	int old = entity->getListID();
 	int right = entcount - old;
 
 	if (old < entcount)
@@ -80,7 +80,7 @@ int Game::despawn(Entity* entity)
 		entcount--;
 		return 0;
 	}
-	else if(entity->listID == entcount)
+	else if(entity->getListID() == entcount)
 	{
 		delete entity;
 		entity = NULL;
@@ -169,9 +169,10 @@ int Game::run()
 
 			for (int i = 0; i < entcount; i++)
 			{
+				movement.move(entlist[i]);
 				if(i != 0)collision.checkBounds(entlist[0], entlist[i]);
 				if (i != 0 && !create)collision.checkBounds(entlist[i], mousex, mousey);
-				entlist[i]->update();
+				entlist[i]->update(); //if collide, do not update to newX/newY
 				display.draw(entlist[i]);
 				if (entlist[i]->getIsDead())despawn(entlist[i]);
 			} //update entities

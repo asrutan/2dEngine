@@ -24,8 +24,8 @@ class Movement
 		bool click;
 		bool attack;
 		void keyEvents();
-        void setTrue(bool*);
-		void setFalse(bool*);
+        //void setTrue(bool*);
+		//void setFalse(bool*);
 		void move(Entity*);
 		int mousex;
 		int mousey;

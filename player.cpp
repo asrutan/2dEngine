@@ -33,16 +33,6 @@ Player::~Player()
 {
 } //end deconstructor
 
-void Entity::mover(int dir)
-{
-	oldx = x;
-	if (dir < 1) {x = x - xVelocity; }
-	else x = x + xVelocity; 
-
-	if (x > 800) { x = 0; }
-	if (x < 0) { x = 800; }
-}
-
 void Player::update()//changed from entity
 {
 	if (dying)dead = true;
