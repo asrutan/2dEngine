@@ -16,6 +16,7 @@
 #include "entity.h"
 #include "movement.h"
 #include "collision.h"
+#include "input.h"
 
 class Game
 {
@@ -23,6 +24,7 @@ class Game
     Display display;
 	Movement movement;
 	Collision collision;
+	Input input;
 	bool quit;
 
     public:

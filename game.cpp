@@ -99,16 +99,10 @@ Create an instance of SDL_Event for player input, events change bools to "true"
  */
 int Game::run()
 {
-	//display.loadTextures();
-
     if (!display.init())
     {
 		cout << "Coudn't initialize" << endl;
     } //end if
-   // else if (!loadTextures())
-    //{
-	//	cout << "Failed to load Texture(s)" << endl;
-   // } //end if
     else
     {
 		bool create = true;
@@ -122,11 +116,11 @@ int Game::run()
         bool keepGoing = true;
         while(keepGoing)
 		{
-			movement.keyEvents();
-			if (movement.getMouse() != 0)
+			input.keyEvents();
+			if (input.getMouse() != 0)
 			{
 				cout << "click" << endl;
-				if (movement.mousex > 700 && movement.mousex < 750 && movement.mousey > 500 && movement.mousey < 550)
+				if (input.mousex > 700 && input.mousex < 750 && input.mousey > 500 && input.mousey < 550)
 				{
 					if(create)
 					{
@@ -137,8 +131,8 @@ int Game::run()
 				}
 				else 
 				{
-					mousex = movement.mousex;
-					mousey = movement.mousey;
+					mousex = input.mousex;
+					mousey = input.mousey;
 					if (create)
 					{
 						if (mousex > 400)spawn(1);

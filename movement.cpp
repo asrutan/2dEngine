@@ -8,26 +8,11 @@ using namespace std;
 
 Movement::Movement()
 {
-    SDL_Event event;
 } //end constructor
 
 Movement::~Movement()
 {
-    quit = false;
 } //end destructor
-
-void Movement::keyEvents()
-{
-	while (SDL_PollEvent(&event) != 0)
-	{
-		if (event.type == SDL_MOUSEBUTTONDOWN && event.key.repeat == 0)
-		{
-			click = true;
-			SDL_GetMouseState(&mousex, &mousey);
-		}
-	} //end if
-} //end while
-  //end keyEvents
 
 void Movement::move(Entity *entity)
 {
@@ -84,14 +69,4 @@ void Movement::move(Entity *entity)
 		entity->getXVelocity(),
 		entity->getYVelocity()
 	);
-}
-
-int Movement::getMouse()
-{
-	if (click)
-	{
-		click = false;
-		return(mousex, mousey);
-	}
-	else return 0;
 }

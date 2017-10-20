@@ -49,7 +49,8 @@ Enemy::Enemy(int direction)
 
 	dir[direction] = true;
 
-	speed = 1;
+	speed = 10;
+	acceleration = 1;
 	xVelocity = 0;
 	yVelocity = 0;
 	//end protected inherited vars
