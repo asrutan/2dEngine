@@ -154,8 +154,8 @@ int Game::run()
 
 			 //skeleton
 			collision.checkBounds(entlist[0], world->horizonts[0]);
-			collision.checkBounds(entlist[0], world->verts[0]);
-			collision.checkBounds(entlist[0], world->verts[1]);
+			//collision.checkBounds(entlist[0], world->verts[0]);
+			//collision.checkBounds(entlist[0], world->verts[1]);
 
 			//skeleton
 
@@ -164,6 +164,8 @@ int Game::run()
 			for (int i = 0; i < entcount; i++)
 			{
 				movement.move(entlist[i]);
+				collision.checkBounds(entlist[i], world->verts[0]);
+				collision.checkBounds(entlist[i], world->verts[1]);
 				if(i != 0)collision.checkBounds(entlist[0], entlist[i]);
 				if (i != 0 && !create)collision.checkBounds(entlist[i], mousex, mousey);
 				entlist[i]->update(); //if collide, do not update to newX/newY

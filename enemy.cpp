@@ -41,6 +41,9 @@ Enemy::Enemy(int direction)
 	//speed = 10;
 	xVelocity = 0;
 
+	collided[0] = false;
+	collided[1] = false;
+
 	dir[0] = false;
 	dir[1] = false;
 	dir[2] = false;
@@ -79,19 +82,30 @@ void Enemy::update()
 {
 	if (!dying)
 	{
-		if (collided)kill();
-		
-		x = newX;
-		y = newY;
+		if (collided[0])kill(); //if collided with player (entID = 0)
 
-		if (x < 0)
+		if (!collided[1])
 		{
-			x = 800;
+			x = newX;
+			y = newY;
+
+			if (x < 0)
+			{
+				x = 800;
+			}
+
+			if (x > 800)
+			{
+				x = 0;
+			}
 		}
-
-		if (x > 800)
+		else 
 		{
-			x = 0;
+			dir[0] = true;
+			dir[1] = false;
+			dir[2] = false;
+			xVelocity = 0;
+			yVelocity = 0;
 		}
 	}
 	else

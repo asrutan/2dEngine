@@ -13,6 +13,9 @@ Player::Player()
     spriteY = 0;
     speed = 10;//movement speed
     //end protected inherited vars
+
+	collided[0] = false;
+	collided[1] = false;
 	
 	x = 400;
     y = 300;

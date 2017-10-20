@@ -40,7 +40,7 @@ class Entity
 		int getEntityID();
 		bool getIsDead();
 		void kill();
-		bool collided = false;
+		bool collided[2];
 		bool floorHit = false;
 		bool wallHit = false;
 		bool collideSide[4]; //1=right 2=left 3=top 4=bottom

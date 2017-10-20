@@ -26,8 +26,8 @@ void Collision::checkBounds(Entity * entity1, Entity * entity2)
 	{
 		if (entity1->y < entity2->y + entity2->height && entity1->y + entity1->height > entity2->y)
 		{
-			entity1->collided = true;
-			entity2->collided = true;
+			entity1->collided[entity2->getEntityID()] = true; //behavior upon collision is determined by the type of entity it hits.
+			entity2->collided[entity1->getEntityID()] = true;
 			//cout << "right" << endl;
 		}
 	}
@@ -36,8 +36,8 @@ void Collision::checkBounds(Entity * entity1, Entity * entity2)
 	{
 		if (entity1->y < entity2->y + entity2->height && entity1->y + entity1->height > entity2->y)
 		{
-			entity1->collided = true;
-			entity2->collided = true;
+			entity1->collided[entity2->getEntityID()] = true; //behavior upon collision is determined by the type of entity it hits.
+			entity2->collided[entity1->getEntityID()] = true;
 			//cout << "left" << endl;
 		}
 	}
@@ -46,8 +46,8 @@ void Collision::checkBounds(Entity * entity1, Entity * entity2)
 	{
 		if (entity1->x + entity1->width > entity2->x && entity1->x < entity2->x + entity2->width)
 		{
-			entity1->collided = true;
-			entity2->collided = true;
+			entity1->collided[entity2->getEntityID()] = true; //behavior upon collision is determined by the type of entity it hits.
+			entity2->collided[entity1->getEntityID()] = true;
 			//cout << "top" << endl;
 		}
 	}
@@ -56,8 +56,8 @@ void Collision::checkBounds(Entity * entity1, Entity * entity2)
 	{
 		if (entity1->x + entity1->width > entity2->x && entity1->x < entity2->x + entity2->width)
 		{
-			entity1->collided = true;
-			entity2->collided = true;
+			entity1->collided[entity2->getEntityID()] = true; //behavior upon collision is determined by the type of entity it hits.
+			entity2->collided[entity1->getEntityID()] = true;
 			//cout << "bottom" << endl;
 		}
 	}
@@ -134,7 +134,7 @@ void Collision::checkBounds(Entity * entity1, World::vertical* vert)
 			//cout << "wubba" << endl;
 			if (entity1->y > vert->y1 && entity1->y + entity1->height < vert->y2)
 			{
-				entity1->collided = true;
+				entity1->collided[1] = true;
 				cout << "wall" << endl;
 				//cout << "right" << endl;
 			}
@@ -160,7 +160,7 @@ void Collision::checkBounds(Entity * entity1, int x, int y)
 	{
 		if (entity1->y < y + entity1->height && entity1->y + entity1->height > y)
 		{
-			entity1->collided = true;
+			entity1->collided[1] = true;
 		}
 	}
 
@@ -168,7 +168,7 @@ void Collision::checkBounds(Entity * entity1, int x, int y)
 	{
 		if (entity1->y < y + entity1->height && entity1->y + entity1->height > y)
 		{
-			entity1->collided = true;
+			entity1->collided[1] = true;
 		}
 	}
 }
