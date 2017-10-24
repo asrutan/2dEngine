@@ -102,6 +102,10 @@ int Entity::getAcceleration()
 {
 	return acceleration;
 }
+double Entity::getAngle()
+{
+	return angle;
+}
 //end setXY
 
 

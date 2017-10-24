@@ -14,6 +14,7 @@ class Player : public Entity
 		collideBox aBox;
 		char lastMove;
 
+		void accelerate();
     public:
         Player();
         ~Player();

@@ -23,6 +23,7 @@ class Entity
 		int listID; //CURRENT SPOT IN ENTITY LIST
 		int friction = 1;
 		int acceleration = 1;
+		double angle = 90;
 
     public:
         Entity();
@@ -56,6 +57,7 @@ class Entity
 		int getFriction();
 		int getSpeed();
 		int getAcceleration();
+		double getAngle();
 
 }; //end Entity
 

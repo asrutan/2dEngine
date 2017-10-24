@@ -41,6 +41,8 @@ Enemy::Enemy(int direction)
 	//speed = 10;
 	xVelocity = 0;
 
+	angle = 45;
+
 	collided[0] = false;
 	collided[1] = false;
 
@@ -97,6 +99,15 @@ void Enemy::update()
 			if (x > 800)
 			{
 				x = 0;
+			}
+			if (y < 0)
+			{
+				y = 600;
+			}
+
+			if (y > 600)
+			{
+				y = 0;
 			}
 		}
 		else 

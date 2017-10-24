@@ -15,6 +15,8 @@ class Movement
         Movement();
         ~Movement();
 		void move(Entity*);
+		void move(Entity * entity, double angle);
+		//void move(Entity*, int); //movement by angle rather than u/d/l/r
         
 }; //end Movement
 

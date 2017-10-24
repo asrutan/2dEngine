@@ -2,7 +2,9 @@
 // Alex Rutan
 // 11/21/15
 #include <iostream>
+#include <math.h>
 #include "movement.h"
+
 
 using namespace std;
 
@@ -63,6 +65,25 @@ void Movement::move(Entity *entity)
 
 		}
 	}
+
+	entity->setNewXY
+	(
+		entity->getXVelocity(),
+		entity->getYVelocity()
+	);
+}
+
+//Overload given entity angle
+void Movement::move(Entity *entity, double angle)
+{
+	//if (entity->getSpeed() >= entity->getXVelocity() && entity->getSpeed()*-1 <= entity->getXVelocity())
+	//{
+		entity->setXVelocity(cos(angle) * 2);
+	//}
+	//if (entity->getSpeed() >= entity->getYVelocity() && entity->getSpeed()*-1 <= entity->getYVelocity())
+	//{
+		entity->setYVelocity(sin(angle) * 2);
+	//}
 
 	entity->setNewXY
 	(

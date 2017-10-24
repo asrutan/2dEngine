@@ -108,7 +108,7 @@ int Game::run()
 		bool create = true;
 
 		World *world = new World;
-		world->define();
+		//world->define();
 
 		display.loadTextures("player.bmp", 0);
 		display.loadTextures("blocks.bmp", 1);
@@ -152,20 +152,9 @@ int Game::run()
 			/**************/
 			movement.move(entlist[0]); //move, checkbounds, update
 
-			 //skeleton
-			collision.checkBounds(entlist[0], world->horizonts[0]);
-			//collision.checkBounds(entlist[0], world->verts[0]);
-			//collision.checkBounds(entlist[0], world->verts[1]);
-
-			//skeleton
-
-			display.draw(world);
-
 			for (int i = 0; i < entcount; i++)
 			{
-				movement.move(entlist[i]);
-				collision.checkBounds(entlist[i], world->verts[0]);
-				collision.checkBounds(entlist[i], world->verts[1]);
+				movement.move(entlist[i], entlist[i]->getAngle());
 				if(i != 0)collision.checkBounds(entlist[0], entlist[i]);
 				if (i != 0 && !create)collision.checkBounds(entlist[i], mousex, mousey);
 				entlist[i]->update(); //if collide, do not update to newX/newY

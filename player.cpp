@@ -57,3 +57,9 @@ void Player::move()
 //{
 //	x = x + xVelocity;//update x by xVelocity
 //}
+
+//Based on count of frames, increment/decrement int acceleration. For regulating speed up/slow down
+void Player::accelerate()
+{
+
+}
